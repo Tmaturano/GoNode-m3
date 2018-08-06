@@ -1,4 +1,4 @@
-# GoNode-m2
+# GoNode-m3
 
 ## Node Bootcamp module 3 Restful API
 ### Features:
