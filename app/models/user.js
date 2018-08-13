@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -26,6 +27,16 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+/* Hook that everytime a user is used, we check if the password has been modified
+   or not before everything.
+   If it was, then we encrypt the password
+*/
+UserSchema.pre('save', async function hashPassword(next) {
+  if (!this.isModified('password')) next();
+
+  this.password = await bcrypt.hash(this.password, 8);
 });
 
 mongoose.model('User', UserSchema);
