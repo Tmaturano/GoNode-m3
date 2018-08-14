@@ -7,6 +7,7 @@ const Raven = require('./app/services/sentry');
 const dbConfig = require('./config/database');
 
 require('dotenv').config();
+
 mongoose.connect(dbConfig.url);
 requireDir(dbConfig.modelsPath);
 
