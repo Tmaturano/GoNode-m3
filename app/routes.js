@@ -27,4 +27,9 @@ routes.use(authMiddleware);
 routes.post('/tweets', controllers.tweetController.create);
 routes.delete('/tweets/:id', controllers.tweetController.destroy);
 
+/**
+ * Users
+ */
+routes.put('/users', controllers.userController.update);
+
 module.exports = routes;
