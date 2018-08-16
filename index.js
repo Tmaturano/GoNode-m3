@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const app = require('express')();
 const mongoose = require('mongoose');
 const requireDir = require('require-dir');
@@ -5,8 +7,6 @@ const bodyParser = require('body-parser');
 const Raven = require('./app/services/sentry');
 
 const dbConfig = require('./config/database');
-
-require('dotenv').config();
 
 mongoose.connect(dbConfig.url);
 requireDir(dbConfig.modelsPath);
